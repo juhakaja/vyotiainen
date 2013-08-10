@@ -3,7 +3,8 @@ require 'spec_helper'
 describe User do
 
   before { @user = User.new(name: "Foo Bar", email: "foo@bar.com",
-                            password: "password", password_confirmation: "password") }
+                            password: "password", password_confirmation: "password",
+                            question: "What?", answer: "42") }
 
   subject { @user }
 
@@ -13,6 +14,8 @@ describe User do
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:question) }
+  it { should respond_to(:answer) }
 
   it { should be_valid }
 
@@ -94,5 +97,25 @@ describe User do
       it { should_not eq user_for_invalid_password }
       specify { expect(user_for_invalid_password).to be_false }
     end
+  end
+
+  describe "when question is not present" do
+    before { @user.question = " " }
+    it { should_not be_valid }
+  end
+
+  describe "when question is too long" do
+    before { @user.question = "a" * 100 }
+    it { should_not be_valid }
+  end
+
+  describe "when answer is not present" do
+    before { @user.answer = " " }
+    it { should_not be_valid }
+  end
+
+  describe "when answer is too long" do
+    before { @user.answer = "a" * 100 }
+    it { should_not be_valid }
   end
 end
