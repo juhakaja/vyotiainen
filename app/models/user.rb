@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
 
   before_save { email.downcase! }
+  before_save { self.admin = false if admin.nil? }
+  before_save { self.locked = true if locked.nil? }
 
   validates :name, presence: true, length: { maximum: 99 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

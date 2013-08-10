@@ -13,7 +13,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to user_path(@user), notice: 'User was successfully created.'
+    	notice = "Your new account is now under review.
+    	          We will send you email to #{@user.email} once your new account is unlocked."
+      redirect_to root_path, notice: notice
     else
       render 'new'
     end

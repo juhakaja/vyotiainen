@@ -3,6 +3,7 @@ Vyotiainen::Application.routes.draw do
 
   match '/signup',  to: 'users#new', via: 'get'
   match '/signin',  to: 'users#new', via: 'get'
+  match '/pending',  to: 'users#show', via: 'get'
 
   root 'welcome#index'
 

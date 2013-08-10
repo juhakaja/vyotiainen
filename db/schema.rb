@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130810132322) do
+ActiveRecord::Schema.define(version: 20130810135934) do
 
   create_table "users", force: true do |t|
     t.string   "name",                            null: false
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20130810132322) do
     t.string   "question"
     t.string   "answer"
     t.boolean  "admin",           default: false
+    t.boolean  "locked",          default: true,  null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
