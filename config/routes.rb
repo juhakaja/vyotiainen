@@ -2,11 +2,11 @@ Vyotiainen::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
-  match '/signup',   to: 'users#new',        via: 'get'
-  match '/signin',   to: 'sessions#new',     via: 'get'
-  match '/signout',  to: 'sessions#destroy', via: 'delete'
+  match '/create_account',   to: 'users#new',        via: 'get'
+  match '/login',   to: 'sessions#new',     via: 'get'
+  match '/logout',  to: 'sessions#destroy', via: 'delete'
 
-  root 'welcome#index'
+  root 'sessions#new'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -32,3 +32,10 @@ input, textarea, select, .uneditable-input {
 input { height: auto !important; }
 
 .error_explanation { color: red; }
+
+.brand {
+  a {
+    text-decoration: none;
+    color: grey;
+  }
+}

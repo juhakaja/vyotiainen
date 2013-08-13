@@ -1,8 +1,5 @@
-.brand vyötiäinen
+.brand= link_to "vyötiäinen", root_path
 
 %ul.nav.pull-right
-  %li= link_to "home", root_path
-  %li= link_to "sign in", signin_path
   - if signed_in?
-    %li= link_to "Profile", current_user
-    %li= link_to "log out", signout_path, method: "delete"
+    %li= link_to "log out", logout_path, method: "delete"

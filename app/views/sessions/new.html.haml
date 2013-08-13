@@ -1,5 +1,5 @@
 .sign
-  %h1 Sign in
+  %h1 Login
 
   = form_for(:session, url: sessions_path) do |f|
 
@@ -9,4 +9,6 @@
     = f.label :password
     = f.password_field :password
 
-    = f.submit "Sign in", class: "btn btn-large btn-primary"
+    = f.submit "login", class: "btn btn-large btn-primary"
+
+  = link_to "Don't have an account? Create one here.", create_account_path
