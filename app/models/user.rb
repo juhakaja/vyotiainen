@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
             uniqueness: { case_sensitive: false }
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }, on: :create
   validates :question, presence: true, length: { maximum: 99 }
   validates :answer, presence: true, length: { maximum: 99 }
 
@@ -23,6 +23,11 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
+  def under_review_note
+    "Your new account is now under review.
+     We will send you email to #{email} once your new account is unlocked."
+   end
+                       
   private
 
   def create_remember_token
