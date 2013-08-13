@@ -2,4 +2,6 @@
 
 %ul.nav.pull-right
   - if signed_in?
-    %li= link_to "log out", logout_path, method: "delete"
+    %li= link_to "logout", logout_path, method: "delete"
+  - else
+    %li= link_to "login", login_path
