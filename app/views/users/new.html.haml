@@ -22,4 +22,7 @@
     = f.label :answer
     = f.text_field :answer
 
+    %label{for: 'captcha'} 2 + 2 =
+    = text_field_tag :captcha
+
     = f.submit "Create my account", class: "btn btn-large btn-primary"

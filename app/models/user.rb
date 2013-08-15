@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  attr_accessor :captcha
 
   before_save { email.downcase! }
   before_save { self.admin = false if admin.nil? }
@@ -26,8 +27,8 @@ class User < ActiveRecord::Base
   def under_review_note
     "Your new account is now under review.
      We will send you email to #{email} once your new account is unlocked."
-   end
-                       
+  end
+
   private
 
   def create_remember_token

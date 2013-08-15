@@ -15,7 +15,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    if @user.save
+    if params[:captcha].to_i != 4
+    	flash.now[:error] = 'Your math is not very strong...'
+    	render 'new'
+    elsif @user.save
       redirect_to root_path, notice: @user.under_review_note
     else
       render 'new'
@@ -30,7 +33,11 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation,
-                                :question, :answer)
+                                 :question, :answer)
+  end
+
+  def user_captcha
+    params.require(:user).permit(:captcha)
   end
 
   def signed_in_user
