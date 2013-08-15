@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessor :captcha
+  attr_reader :captcha
 
   before_save { email.downcase! }
   before_save { self.admin = false if admin.nil? }
